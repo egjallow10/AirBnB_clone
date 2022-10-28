@@ -1,11 +1,13 @@
 #!/usr/bin/python3
+"""The Base ClassI"""
 
 import datetime
 import uuid
 import models
 
 
-class BaseModel():
+
+class BaseModel:
     """Defining a base class model
 
     This model perform serialization/deserialization
@@ -23,17 +25,18 @@ class BaseModel():
         """
 
         if kwargs:
-            if kwargs, val in kwargs.item():
+            for kwargs, val in kwargs.item():
                 if kwargs in ('created_at', 'updated_at'):
                     val = datetime.strptime(val, '%Y-%m-%dT%H:%M:%S.%f')
 
-                if kwargs =! '__class__':
-                    setattr(self, kwargs, val)
+                elif kwargs == '__class__':
+                    continue
+                setattr(self, kwargs, val)
         else:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
             self.updated_at = self.created_at
-            model.storage.new(self)
+            models.storage.new(self)
 
     def __str__(self):
         """print [<class name>] (<self.id>) <self.__dict__>"""
