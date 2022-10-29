@@ -6,7 +6,6 @@ import uuid
 import models
 
 
-
 class BaseModel:
     """Defining a base class model
 
@@ -29,7 +28,7 @@ class BaseModel:
                 if k == 'created_at' or k == 'updated_at':
                     val = datetime.strptime(val, '%Y-%m-%dT%H:%M:%S.%f')
 
-                elif kwargs == '__class__':
+                elif k == '__class__':
                     continue
                 setattr(self, k, val)
         else:
@@ -53,7 +52,6 @@ class BaseModel:
         """save the new(self) method"""
         models.storage.save()
         return
-
 
     def to_dict(self):
         """diplaying class information"""
