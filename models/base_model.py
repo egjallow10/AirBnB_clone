@@ -13,7 +13,7 @@ class BaseModel:
     This model perform serialization/deserialization
     """
 
-    def _init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):
         """base model attributes
 
         arg:
@@ -25,7 +25,7 @@ class BaseModel:
         """
 
         if kwargs:
-            for k, val in kwargs.item():
+            for k, val in kwargs.items():
                 if k == 'created_at' or k == 'updated_at':
                     val = datetime.strptime(val, '%Y-%m-%dT%H:%M:%S.%f')
 
