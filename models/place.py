@@ -7,7 +7,7 @@ from models.base_model import BaseModel
 
 class Place(BaseModel):
     """
-    calss attributes
+    class attributes
     """
     city_id = ""
     user_id = ""
