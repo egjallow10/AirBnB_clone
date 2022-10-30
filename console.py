@@ -123,6 +123,7 @@ class HBNBCommand(cmd.Cmd):
         """Prints the contents of `file.json`"""
         print(models.storage.all())
 
+
 def parse(line):
     """Convert a series of zero or more numbers to an argument list."""
     return shlex.split(line)
