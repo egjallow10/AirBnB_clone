@@ -5,7 +5,7 @@ import shlex
 
 
 class HBNBCommand(cmd.Cmd):
-    """cmd clone"""
+    """Cmd clone"""
     # intro = """Documented commands (type help <topic>):\n========================================\nEOF\t  help\t  quit\n \n"""
     prompt = '(hbnb) '
     file = None
@@ -43,10 +43,7 @@ class HBNBCommand(cmd.Cmd):
                 print("** no instance found **")
 
     def do_destroy(self, args):
-        """
-        Deletes an instance based on the class name and id
-        (save the change into the JSON file)
-        """
+        """Deletes an instance based on the class name and id."""
         args = parse(args)
         if not args:
             print("** class name missing **")
@@ -95,10 +92,7 @@ class HBNBCommand(cmd.Cmd):
                 print("** no instance found **")
 
     def do_all(self, args):
-        """
-        Prints all string representation of all instances
-        based or not on the class name.
-        """
+        """Prints all string representation of all instances."""
         store = models.storage.all()
         args = parse(args)
         if not args:
@@ -128,7 +122,6 @@ class HBNBCommand(cmd.Cmd):
     def do_json(self):
         """Prints the contents of `file.json`"""
         print(models.storage.all())
-
 
 def parse(line):
     """Convert a series of zero or more numbers to an argument list."""
