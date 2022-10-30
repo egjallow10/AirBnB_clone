@@ -27,7 +27,7 @@ class Teststate(unittest.TestCase):
         Tests if class is named correctly.
         """
         state1 = State()
-        self.assertEqual(state1.__class__.__name__, "Sate")
+        self.assertEqual(state1.__class__.__name__, "State")
 
     def test_father(self):
         """
