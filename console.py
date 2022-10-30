@@ -4,11 +4,22 @@
 
 import cmd
 import models
+from models.base_model import BaseModel
+from models.state import State
+from models.user import User
+from models.city import City
+from models.place import Place
+from models.amenity import Amenity
+from models.review import Review
+import shlex
+import re
 
 
 class HBNBCommand(cmd.Cmd):
     """ cmd clone"""
     intro = 'Documented commands (type help <topic>):\n========================================\nEOF\t  help\t  quit\n \n'
+    allowes_classes = ['BaseModel', 'User', 'City', 'Place',
+            'Amenity', 'Review', 'State']
     prompt = '(hbnb) '
 
     def __init__(self, completekey='tab', stdin=None, stdout=None):
