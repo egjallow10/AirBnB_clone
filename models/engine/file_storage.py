@@ -33,6 +33,17 @@ class FileStorage():
         with open(self.__file_path, 'w') as f:
             json.dump(obj_dict, f)
 
+    def classes(self):
+        """Returns a dictionary of valid classes and their references."""
+        classes = {"BaseModel": BaseModel,
+                "User": User,
+                "State": State,
+                "City": City,
+                "Amenity": Amenity,
+                "Place": Place,
+                "Review": Review}
+        return classes
+
     def reload(self):
         try:
             with open(self.__file_path, 'r') as f:
