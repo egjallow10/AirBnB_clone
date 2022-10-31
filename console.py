@@ -1,26 +1,14 @@
 #!/usr/bin/python3
-"""[summary]
-"""
-
 import cmd
 import models
-from models.base_model import BaseModel
-from models.state import State
-from models.user import User
-from models.city import City
-from models.place import Place
-from models.amenity import Amenity
-from models.review import Review
 import shlex
-import re
 
 
 class HBNBCommand(cmd.Cmd):
-    """ cmd clone"""
-    intro = 'Documented commands (type help <topic>):\n========================================\nEOF\t  help\t  quit\n \n'
-    allowes_classes = ['BaseModel', 'User', 'City', 'Place',
-            'Amenity', 'Review', 'State']
+    """Cmd clone"""
+    # intro = """Documented commands (type help <topic>):\n========================================\nEOF\t  help\t  quit\n \n"""
     prompt = '(hbnb) '
+    file = None
 
     def __init__(self, completekey='tab', stdin=None, stdout=None):
         """init method"""
@@ -44,7 +32,7 @@ class HBNBCommand(cmd.Cmd):
         saves it (to the JSON file) and prints the id
         """
 
-        # Tmake this common check a property
+        # TODO: make this common check a property
         if arg == "":
             print('** class name missing **')
             return
@@ -90,7 +78,7 @@ class HBNBCommand(cmd.Cmd):
 
         try:
             model_name, model_id = arg.split(' ')
-            models.classes[model_name]  
+            models.classes[model_name]  # check the model is supported
             models.storage.delete(model_name, model_id)
             models.storage.save()
 
@@ -125,6 +113,7 @@ class HBNBCommand(cmd.Cmd):
         """
         Updates an instance based on the class name and id by adding
         or updating attribute (save the change into the JSON file)
+
         Usage: update <class name> <id> <attribute name> "<attribute value>"
         """
 
@@ -133,7 +122,7 @@ class HBNBCommand(cmd.Cmd):
             return
 
         try:
-            # Handle case where the value to update has a space character
+            # TODO: Handle case where the value to update has a space character
             model_name, model_id, attr, value = arg.split(' ')
 
             models.storage.update(model_name, model_id, attr, value)
@@ -147,7 +136,7 @@ class HBNBCommand(cmd.Cmd):
             elif arg.count(' ') == 2:
                 print("** value missing **")
             elif arg.count(' ') > 3:
-                #Allow this case, and ignore the extra arguments
+                # TODO: Allow this case, and ignore the extra arguments
                 print("** too many arguments (2 arguments required)**")
             else:
                 print(e)
