@@ -1,0 +1,1 @@
+This projec is about to create a static we pages of AirBnB projec
